@@ -138,7 +138,18 @@ public class BasicStats {
 
       return min;
   }
+  public static double maximum(double ... numbers) {
 
+    double max = numbers[0]; // Assume the first element is the maximum
+
+    for (int i = 1; i < numbers.length; i++) {
+        if (numbers[i] > max) {
+            max = numbers[i];
+        }
+    }
+
+    return max;
+}
     /**
      * Compute the mode of an array of numbers.
      */

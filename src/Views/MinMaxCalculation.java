@@ -12,18 +12,21 @@ public class MinMaxCalculation implements View {
     //Instance variables
     double minimum;
     double maximum;
-    JTextField jtfMin;
+    //JTextField jtfMin;
     //JTextField jtfMax;
-  
+    JTextComponent textComponent; 
     String name;
 
     public MinMaxCalculation() {
         minimum = 0;
-       
-        jtfMin = new JTextField(5);
-        jtfMin.setEditable(false);
-
-        name = "Minimum";
+        maximum = 0; 
+        //jtfMin = new JTextField(5);
+        //jtfMin.setEditable(false);
+        //jtfMax = new JTextField(5);
+        //jtfMax.setEditable(false);
+        textComponent = new JTextArea(2, 5); // Create a JTextArea for multi-line text
+        textComponent.setEditable(false);
+        name = "Minimum and Maximum";
     }
 
     @Override
@@ -31,19 +34,32 @@ public class MinMaxCalculation implements View {
         minimum = BasicStats.minimum(BasicStats.getArrayDouble(numbers));
 
         //Set text
-        jtfMin.setText("" + minimum);
-    
+        //jtfMin.setText("" + minimum);
+        maximum = BasicStats.maximum(BasicStats.getArrayDouble(numbers));
+
+        //Set text
+        textComponent.setText("Minimum: " + minimum + "\nMaximum: " + maximum);
+
+        //jtfMax.setText("" + maximum);
 
     }
+/* 
+    @Override
     public void reset() {
         jtfMin.setText("");
-      }
-    
-      @Override
-      public JTextComponent show() {
-        return jtfMin;
-      }
-   
+        jtfMax.setText("");
+    }
+
+    @Override
+    public JTextComponent show() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(2, 1)); // Two rows for minimum and maximum
+
+        panel.add(jtfMin);
+        panel.add(jtfMax);
+
+    return panel;
+    }
 
     @Override
     public String getName() {
@@ -54,8 +70,31 @@ public class MinMaxCalculation implements View {
         return minimum;
     }
 
-    
+    public double getMaximum() {
+        return maximum;
+    }
+*/
+    @Override
+    public void reset() {
+        textComponent.setText(""); // Clear the text when resetting
+    }
 
-    
+    @Override
+    public JTextComponent show() {
+        return textComponent;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    public double getMinimum() {
+        return minimum;
+    }
+
+    public double getMaximum() {
+        return maximum;
+    }
 
 }
