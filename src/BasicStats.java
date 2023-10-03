@@ -31,13 +31,15 @@ public class BasicStats {
     NumbersView numbersView = new NumbersView();
     AddNumView addNumView = new AddNumView();
     ResetView resetView = new ResetView();
-
+    MinMaxCalculation minMaxCalculation= new MinMaxCalculation();
     //Create statsView
     ArrayList<View> statsViews = new ArrayList<View>();
     statsViews.add(countView);
     statsViews.add(medianView);
     statsViews.add(meanView);
     statsViews.add(modeView);
+    statsViews.add(minMaxCalculation);
+
 
     /***** REGISTER MVC BLOCK *****/
 
@@ -124,6 +126,18 @@ public class BasicStats {
 
       return median;
     }
+    public static double minimum(double ... numbers) {
+     
+      double min = numbers[0]; // Assume the first element is the minimum
+
+      for (int i = 1; i < numbers.length; i++) {
+          if (numbers[i] < min) {
+              min = numbers[i];
+          }
+      }
+
+      return min;
+  }
 
     /**
      * Compute the mode of an array of numbers.
